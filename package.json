@@ -1,0 +1,56 @@
+{
+  "name": "samaa-aerospace-loadcell-monitor",
+  "version": "1.0.0",
+  "description": "Samaa Aerospace Load Cell Monitor",
+  "main": "main.js",
+  "build": {
+    "appId": "com.samaaaerospace.loadtestmonitor",
+    "productName": "Samaa Load Test Monitor",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "assets",
+        "to": "assets"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "keywords": [],
+  "author": "SAMAA Aerospace LLP",
+  "license": "ISC",
+  "dependencies": {
+    "@serialport/list": "^13.0.0",
+    "axios": "^1.10.0",
+    "chart.js": "^4.5.0",
+    "chartjs-plugin-annotation": "^3.1.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "fs-extra": "^11.3.0",
+    "jsmodbus": "^4.0.10",
+    "modbus-serial": "^8.0.21-no-serial-port",
+    "mongoose": "^8.16.2",
+    "node-machine-id": "^1.1.12",
+    "pdfkit": "^0.17.1",
+    "serialport": "^13.0.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "electron": "^37.2.1",
+    "electron-builder": "^26.0.12",
+    "electron-reload": "^2.0.0-alpha.1"
+  }
+}

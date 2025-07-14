@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Samaa Aerospace Load Test Monitor</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="assets/icon.png" />
+  </head>
+  <body>
+    <!-- ✅ ACTIVATION PAGE ADDED -->
+    <div id="activationPage" class="page">
+      <div id="activationNavbar">
+        <img src="assets/long-logo.png" alt="Samaa Aerospace Logo" />
+      </div>
+      <div id="activationCard">
+        <h1>Activate Your License</h1>
+        <p>Please enter your license key and organization to activate.</p>
+        <input type="text" id="licenseKeyInput" placeholder="License Key" />
+        <input type="text" id="organizationInput" placeholder="Organization" />
+        <button id="activateBtn">Activate</button>
+        <div
+          id="activationStatus"
+          style="
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 14px;
+          "
+        ></div>
+      </div>
+    </div>
+
+    <div id="mainAppPage" class="page active">
+      <div class="navbar">
+        <div class="nav-links">
+          <a id="navHome" class="active">Home</a>
+          <a id="navReports">Reports</a>
+          <a id="navSettings">Settings</a>
+        </div>
+        <div class="logo">
+          <img src="assets/long-logo.png" alt="Samaa Aerospace Logo" />
+        </div>
+      </div>
+      <div id="homePage" class="page active">
+        <h1>LOAD TEST MONITOR</h1>
+        <!-- 📌 Form Section -->
+
+        <form id="masterCalibrationForm">
+          <h3>MASTER CALIBRATION EQUIPMENT</h3>
+
+          <label
+            >LOAD CELL PART NO.<input
+              type="text"
+              name="loadCellPartNo"
+              required
+          /></label>
+          <label
+            >LOAD CELL SERIAL NO.<input
+              type="text"
+              name="loadCellSerialNo"
+              required
+          /></label>
+          <label
+            >LOAD CELL MODEL NO.<input
+              type="text"
+              name="loadCellModelNo"
+              required
+          /></label>
+          <label
+            >LOAD CELL LAST CALIBRATION DATE<input
+              type="date"
+              name="loadCellLastCalibrationDate"
+              required
+          /></label>
+          <label
+            >LOAD CELL CALIBRATION VALID UPTO<input
+              type="date"
+              name="loadCellCalibrationValidity"
+              required
+          /></label>
+          <label
+            >DISPLAY PART NO.<input type="text" name="displayPartNo" required
+          /></label>
+          <label
+            >DISPLAY MODEL NO.<input type="text" name="displayModelNo" required
+          /></label>
+          <label
+            >DISPLAY SERIAL NO.<input
+              type="text"
+              name="displaySerialNo"
+              required
+          /></label>
+          <label
+            >DISPLAY LAST CALIBRATION DATE<input
+              type="date"
+              name="displayLastCalibrationDate"
+              required
+          /></label>
+          <label
+            >DISPLAY CALIBRATION VALID UPTO<input
+              type="date"
+              name="displayCalibrationValidity"
+              required
+          /></label>
+        </form>
+        <button id="saveCalibrationButton" type="button">
+          Save Master Calibration Data
+        </button>
+
+        <form id="equipmentTestForm">
+          <!-- Master Equipment -->
+
+          <!-- Tested Equipment -->
+          <h3>EQUIPMENT TESTED</h3>
+          <label
+            >EQUIPMENT<input type="text" name="equipmentName" required
+          /></label>
+          <label
+            >TYPE OF EQUIPMENT<input
+              type="text"
+              name="typeOfEquipment"
+              required
+          /></label>
+          <label
+            >EQUIPMENT PART NO.<input
+              type="text"
+              name="equipmentPartNo"
+              required
+          /></label>
+          <label
+            >EQUIPMENT MODEL NO.<input
+              type="text"
+              name="equipmentModelNo"
+              required
+          /></label>
+          <label
+            >EQUIPMENT SERIAL NO.<input
+              type="text"
+              name="equipmentSerialNo"
+              required
+          /></label>
+          <label
+            >RATED LOAD CAPACITY<input
+              type="number"
+              name="ratedLoadCapacity"
+              required
+          /></label>
+          <label
+            >PROOF LOAD PERCENTAGE<input
+              type="number"
+              name="proofLoadPercentage"
+              required
+          /></label>
+          <label>
+            YEAR OF MANUFACTURE
+            <input type="number" name="yearOfManufacture" required />
+          </label>
+          <label
+            >Test Date
+            <input type="date" name="testDate" required />
+          </label>
+          <label>LOCATION<input type="text" name="location" required /></label>
+
+          <!-- Personnel -->
+          <h3>CERTIFICATION</h3>
+          <label>TESTED BY<input type="text" name="testedBy" required /></label>
+          <label
+            >CERTIFIED BY<input type="text" name="certifiedBy" required
+          /></label>
+        </form>
+        <button id="saveEquipmentButton" type="button">
+          Save Equipment Data
+        </button>
+
+        <div id="controlBar">
+          <!-- Serial Port + Connect -->
+          <select id="serialPortSelect">
+            <option value="">Select Serial Port</option>
+          </select>
+          <button id="connectButton">Connect Device</button>
+          <div id="divider"></div>
+          <button id="startButton">Start Load Test</button>
+          <button id="stopButton">Stop Load Test</button>
+          <button id="downloadButton">Download Report</button>
+          <button id="clearDataButton">Clear Data</button>
+        </div>
+
+        <div id="controlPanelContainer">
+          <div id="statusCards">
+            <h2 id="liveLoadHeader">LIVE LOAD DATA</h2>
+            <div id="loadValue">0.000 t / 0.00 kN</div>
+            <div id="peakDisplay">Peak Load: 0.000 t</div>
+            <div id="proofLoadDisplay">Proof Load: -- t</div>
+            <div id="lastTimestamp">Last Update: --</div>
+            <div id="status">Status: Disconnected</div>
+          </div>
+
+          <div id="logWrapper">
+            <table id="dataTable">
+              <thead>
+                <tr>
+                  <th>TIMESTAMP</th>
+                  <th>LOAD (t)</th>
+                  <th>LOAD (kN)</th>
+                </tr>
+              </thead>
+              <tbody id="dataTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <canvas id="loadChart" width="800" height="300"></canvas>
+      </div>
+
+      <div id="reportsPage" class="page">
+        <h2>Reports</h2>
+        <p>View and download previous test reports here.</p>
+      </div>
+
+      <!-- SETTINGS PAGE -->
+      <div id="settingsPage" class="page">
+        <h2>Settings</h2>
+        <form id="settingsForm">
+          <label>
+            Company Name:
+            <input
+              type="text"
+              name="companyName"
+              id="companyNameInput"
+              required
+            />
+          </label>
+          <label>
+            Default Test Location:
+            <input
+              type="text"
+              name="defaultTestLocation"
+              id="defaultLocationInput"
+              required
+            />
+          </label>
+
+          <div class="button-row">
+            <button id="uploadLogoBtn" type="button">Upload Logo</button>
+            <button type="submit" id="saveSettingsButton">Save Settings</button>
+          </div>
+          <img id="logoPreview" ... />
+        </form>
+      </div>
+    </div>
+
+    <script src="./renderer.js"></script>
+
+    <script>
+      // PAGE SWITCHING
+      function showPage(pageId) {
+        document
+          .querySelectorAll('.page')
+          .forEach((page) => page.classList.remove('active'))
+        document.getElementById(pageId).classList.add('active')
+
+        document
+          .querySelectorAll('.nav-links a')
+          .forEach((link) => link.classList.remove('active'))
+        if (pageId === 'homePage')
+          document.getElementById('navHome').classList.add('active')
+        if (pageId === 'reportsPage')
+          document.getElementById('navReports').classList.add('active')
+        if (pageId === 'settingsPage')
+          document.getElementById('navSettings').classList.add('active')
+      }
+
+      document
+        .getElementById('navHome')
+        .addEventListener('click', () => showPage('homePage'))
+      document
+        .getElementById('navReports')
+        .addEventListener('click', () => showPage('reportsPage'))
+      document
+        .getElementById('navSettings')
+        .addEventListener('click', () => showPage('settingsPage'))
+    </script>
+  </body>
+</html>
