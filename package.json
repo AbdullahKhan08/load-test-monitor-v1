@@ -10,7 +10,11 @@
       "output": "dist"
     },
     "files": [
-      "**/*"
+      "**/*",
+      {
+        "from": "assets",
+        "to": "assets"
+      }
     ],
     "extraResources": [
       {
