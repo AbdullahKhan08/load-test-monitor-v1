@@ -49,7 +49,7 @@ function getTableData() {
 
 function signData(licenseKey, organization, deviceFingerprint) {
   // const secret = process.env.LICENSE_SECRET
-  const secret = 'samaaaerospacellpmasoodkhan@6544'
+  const secret = 'your secret'
   const payload = `${licenseKey}|${organization}|${deviceFingerprint}`
   return crypto.createHmac('sha256', secret).update(payload).digest('hex')
 }

@@ -23,7 +23,8 @@
       }
     ],
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "/assets/icon.png"
     }
   },
   "scripts": {
