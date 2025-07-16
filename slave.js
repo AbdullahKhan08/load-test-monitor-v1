@@ -25,7 +25,7 @@ serverTCP.on('connection', () => {
 })
 
 // Increment weight to simulate lifting
-const maxLoadKg = 5000 // 100 tons in kg
+const maxLoadKg = 100000 // 100 tons in kg
 
 const incrementInterval = setInterval(() => {
   if (testLoadKg < maxLoadKg) {

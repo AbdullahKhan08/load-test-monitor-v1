@@ -1,5 +1,8 @@
 const crypto = require('crypto')
-require('dotenv').config()
+const path = require('path')
+const dotenv = require('dotenv')
+const envPath = path.join(process.resourcesPath, '.env')
+dotenv.config({ path: envPath })
 
 /**
  * Updates the status badge with the provided text and status type.
@@ -48,8 +51,8 @@ function getTableData() {
 }
 
 function signData(licenseKey, organization, deviceFingerprint) {
-  // const secret = process.env.LICENSE_SECRET
-  const secret = 'your secret'
+  const secret = process.env.LICENSE_SECRET
+  // const secret = 'samaaaerospacellpmasoodkhan@6544'
   const payload = `${licenseKey}|${organization}|${deviceFingerprint}`
   return crypto.createHmac('sha256', secret).update(payload).digest('hex')
 }

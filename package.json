@@ -11,20 +11,30 @@
     },
     "files": [
       "**/*",
+      "!node_modules/.cache",
+      "!dist",
       {
         "from": "assets",
         "to": "assets"
-      }
+      },
+      ".env"
     ],
     "extraResources": [
       {
         "from": "assets",
         "to": "assets"
+      },
+      {
+        "from": ".env",
+        "to": ".env"
       }
     ],
+    "mac": {
+      "icon": "build/icon.icns"
+    },
     "win": {
       "target": "nsis",
-      "icon": "/assets/icon.png"
+      "icon": "build/icon.ico"
     }
   },
   "scripts": {

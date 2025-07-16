@@ -3,14 +3,17 @@ const fs = require('fs-extra')
 const path = require('path')
 const { SerialPort } = require('serialport')
 const { checkLicense } = require('./licenseManager')
-require('dotenv').config()
+const dotenv = require('dotenv')
+const envPath = path.join(process.resourcesPath, '.env')
+dotenv.config({ path: envPath })
 
-if (process.env.NODE_ENV === 'development') {
-  require('electron-reload')(process.cwd(), {
-    electron: process.cwd() + '/node_modules/.bin/electron',
-    ignored: /reports|settings/,
-  })
-}
+// if (process.env.NODE_ENV === 'development') {
+//   require('electron-reload')(process.cwd(), {
+//     electron: process.cwd() + '/node_modules/.bin/electron',
+//     ignored: /reports|settings/,
+//   })
+// }
+console.log(process.env.LICENSE_SERVER_URL)
 
 let splash
 let mainWindow

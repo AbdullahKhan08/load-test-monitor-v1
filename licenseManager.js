@@ -2,12 +2,16 @@
 const axios = require('axios')
 const { machineIdSync } = require('node-machine-id')
 const fs = require('fs-extra')
+const path = require('path')
 const { signData } = require('./utils')
-require('dotenv').config()
+const dotenv = require('dotenv')
+const envPath = path.join(process.resourcesPath, '.env')
+dotenv.config({ path: envPath })
 
 // ✅ Allow easy environment override
 const SERVER_URL =
-  process.env.LICENSE_SERVER_URL || 'https://license-server-0tjb.onrender.com'
+  // process.env.LICENSE_SERVER_URL || 'https://license-server-0tjb.onrender.com'
+  process.env.LICENSE_SERVER_URL
 const SECRET_KEY = process.env.LICENSE_SECRET // ✅ ADDED fallback for HMAC
 
 /**
