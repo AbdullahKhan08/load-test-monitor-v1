@@ -1,7 +1,7 @@
 {
-  "name": "samaa-aerospace-loadcell-monitor",
+  "name": "samaa-aerospace-loadtest-monitor",
   "version": "1.0.0",
-  "description": "Samaa Aerospace Load Cell Monitor",
+  "description": "Samaa Aerospace Load Test Monitor",
   "main": "main.js",
   "build": {
     "appId": "com.samaaaerospace.loadtestmonitor",
@@ -29,12 +29,28 @@
         "to": ".env"
       }
     ],
+    "asar": true,
     "mac": {
       "icon": "build/icon.icns"
     },
     "win": {
-      "target": "nsis",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
       "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Load Test Monitor"
     }
   },
   "scripts": {
@@ -43,7 +59,11 @@
     "build": "electron-builder"
   },
   "keywords": [],
-  "author": "SAMAA Aerospace LLP",
+  "author": {
+    "name": "Samaa Aerospace LLP",
+    "email": "info@samaaaerospace.aero",
+    "url": "https://www.samaaaerospace.aero"
+  },
   "license": "ISC",
   "dependencies": {
     "@serialport/list": "^13.0.0",
